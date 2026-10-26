@@ -1,95 +1,119 @@
+<div align="center">
+
+<img src="https://img.shields.io/badge/NEOBOT--BYDIKA-v1.0.0-16a34a?style=for-the-badge&labelColor=0d0d0d" alt="version">&nbsp;
+<img src="https://img.shields.io/badge/node-%3E%3D16-blue?style=for-the-badge&labelColor=0d0d0d" alt="node">&nbsp;
+<img src="https://img.shields.io/badge/license-MIT-yellow?style=for-the-badge&labelColor=0d0d0d" alt="license">
+
 # 🤖 NEOBOT-BYDIKA
 
-> Bot client resmi untuk **Neo Chat** — kirim **Rich Message** kaya Telegram/WhatsApp langsung dari terminal. Gratis, open source, bikinan **dika x dev**.
+### Bot Client Resmi untuk [NEO CHAT](https://neochat.web.id)
 
-![version](https://img.shields.io/badge/version-1.0.0-green) ![node](https://img.shields.io/badge/node-%3E%3D16-blue) ![license](https://img.shields.io/badge/license-MIT-yellow)
+**Kirim Rich Message kaya Telegram & WhatsApp langsung dari terminal.**
+Pairing kode 8 digit — semudah login WhatsApp Web. **100% gratis.**
 
-Bot ini nyambung ke web **Neo Chat** pake **kode pairing 8 digit** — sama kaya WhatsApp Web. Login di web, generate kode, jalankan bot, langsung konek ke akun kamu. **100% gratis.**
+[Website](https://neochat.web.id) · [Daftar Gratis](https://neochat.web.id) · [Contoh Template](EXAMPLE.md) · [Lapor Bug](https://github.com/dikadev-hub/neobot-bydika/issues)
+
+</div>
 
 ---
 
-## ✨ Fitur
+> **Neo Chat** adalah platform chat modern tanpa nomor HP — chat real-time, grup, komunitas, saluran, status 24 jam, dompo digital & **Rich Message engine** kaya Telegram. Daftar gratis di **[neochat.web.id](https://neochat.web.id)** 🚀
 
-- 🔗 **Pairing kode 8 digit** — dari Neo Chat → Profile → Perangkat → Generate Kode
-- 🎨 **Rich Message 24 key** — heading, tabel, checkbox, spoiler, tombol, dokumen, audio, dll
-- 💬 **Chat pribadi & Grup** — bot bisa balas & kirim ke mana aja
-- 🔘 **Button interaktif** — callback & URL button kaya WhatsApp
-- 📦 **Kirim dokumen** — PDF/file card kaya WA
-- 📢 **Announce grup** — pengumuman rich dengan context bundle
-- 🔁 **Auto-reconnect** — koneksi putus? bot nyambung sendiri
-- 🖥️ **Terminal REPL** — `status`, `exit`, dan command lain langsung dari terminal
+## 🎯 Kenapa NEOBOT?
 
-## 📋 Template Rich yang didukung
+| | |
+|:---:|:---|
+| 🔗 | **Pairing Kode 8 Digit** — generate dari Profile → Perangkat, masukkan ke bot, langsung konek |
+| 🎨 | **24 Rich Keys** — heading, tabel, checkbox, spoiler, dokumen, audio, slideshow, math, dll |
+| 🔘 | **Button Interaktif** — callback & URL button, button list kaya WhatsApp, carousel produk |
+| 💬 | **Chat Pribadi & Grup** — bot balas & broadcast ke mana aja |
+| 📦 | **Kirim Dokumen** — file card kaya WhatsApp (PDF, ZIP, dll) |
+| 🔁 | **Auto-Reconnect** — internet putus? bot nyambung sendiri begitu balik |
+| 🖥️ | **Terminal REPL** — monitoring & kontrol bot langsung dari terminal |
+
+## 📊 Template Rich Message
+
+<details open>
+<summary><b>Klik untuk lihat semua 24 key</b></summary>
 
 | Kategori | Key |
 |---|---|
-| Teks | `h1`–`h6`, `p`, `mix`, inline (`b` `i` `u` `s` `mark` `spoiler` `code` `sub` `sup`) |
-| Struktur | `blockquote`, `aside`, `details`, `hr`, `ul`, `ol`, `checkbox`, `table` |
-| Media | `img`, `video`, `audio`, `figure`, `collage`, `slideshow`, `mediaSpoiler`, `file` |
-| Interaksi | `a`, `buttons`, `buttonsInline`, `contextBundle`, **button list (interactive)**, **carousel produk** |
-| Kode & lain | `pre` (syntax highlight), `math`/`mathBlock`, `emoji`, `raw` (rich HTML), `footer` |
+| **Teks** | `h1` – `h6` · `p` · `mix` · inline: `b` `i` `u` `s` `mark` `spoiler` `code` `sub` `sup` |
+| **Struktur** | `blockquote` · `aside` · `details` · `hr` · `ul` · `ol` · `checkbox` · `table` |
+| **Media** | `img` · `video` · `audio` · `figure` · `collage` · `slideshow` · `mediaSpoiler` · `file` |
+| **Interaksi** | `a` · `buttons` · `buttonsInline` · `contextBundle` · button list · carousel |
+| **Kode & Lain** | `pre` (+syntax highlight) · `math` · `mathBlock` · `emoji` · `raw` (HTML custom) · `footer` |
 
-### Bonus: pesan interaktif native
+</details>
+
+### Contoh: Menu Bot dengan Button
 
 ```js
-// Button list (kaya WhatsApp list message)
-sendInteractive(from, {
-  kind: "list", title: "Pilih Layanan", text: "Pilih opsi 👇",
-  sections: [{ title: "Utama", rows: [
-    { id: "topup", icon: "fa-wallet", title: "💰 Topup", description: "Isi saldo" }
-  ]}]
-})
-
-// Carousel katalog produk (swipe horizontal)
-sendCarousel(from, [
-  { id: "p1", nama: "Premium Tee", harga: 99000, hargaOld: 149000,
-    deskripsi: "Kaos cotton 30s", foto: "https://picsum.photos/400/300" }
+sendRich(from, [
+  { h1: "🤖 BOT KAMU" },
+  { p: ["Halo ", { b: "kakak" }, "! Pilih menu 👇"] },
+  { checkbox: [
+    { checked: true,  text: "Bot online 24 jam" },
+    { checked: false, text: "Mode premium" }
+  ]},
+  { buttonsInline: [[
+    { text: "🎁 Promo", callback: "promo", style: "success"  },
+    { text: "ℹ️ Help",  callback: "help",  style: "primary"  }
+  ]]},
+  { footer: "NeoBot • by dika" }
 ])
-
-// Rich HTML custom (raw) — masuk richArray: [{ raw: "<div>...</div>" }]
 ```
+
+> 📚 Contoh lengkap lainnya: **[EXAMPLE.md](EXAMPLE.md)** — promo, katalog carousel, pesan gabungan ala WA, dokumen & media.
 
 ## 🚀 Cara Pakai
 
-### 1. Ambil kode pairing
-Buka **Neo Chat** → tap foto profile → **Perangkat & Bot** → **Generate Kode 8 Digit** (contoh: `ABCD-1234`, berlaku 5 menit).
+### 1️⃣ Daftar & Ambil Kode Pairing
 
-### 2. Jalankan bot
+Buka **[neochat.web.id](https://neochat.web.id)** → daftar gratis → **Profile** → **Perangkat & Bot** → **Generate Kode 8 Digit**
+
+```
+Kode berlaku 5 menit:  contoh →  ABCD-1234
+```
+
+### 2️⃣ Install & Jalankan
 
 ```bash
-# install dulu
-git clone https://github.com/dikaxdev/neobot-bydika.git
+git clone https://github.com/dikadev-hub/neobot-bydika.git
 cd neobot-bydika
 npm install
-
-# konek pake kode 8 digit
 node index.js ABCD-1234
 ```
 
-Atau pake environment:
+<details>
+<summary><b>⚙️ Konfigurasi lanjutan (environment)</b></summary>
 
 ```bash
-NEO_SERVER=https://domain-neochat-kamu.com NEO_CODE=ABCD-1234 node index.js
+NEO_SERVER=https://neochat.web.id   # server Neo Chat (default)
+NEO_CODE=ABCD-1234                  # kode pairing
+node index.js
 ```
+Atau bikin file `.env` dari [.env.example](.env.example).
 
-> 💡 Ganti `NEO_SERVER` dengan domain Neo Chat tempat kamu daftar. Default mengarah ke server resmi.
+</details>
 
-### 3. Done! 🎉
+### 3️⃣ Bot Online! 🎉
 
-Bot langsung online. Coba kirim ke bot kamu di Neo Chat:
+DM bot kamu di Neo Chat:
 
-```
-/menu      → menu rich dengan tombol
-/promo     → halaman promo (tabel harga + CTA)
-/catalog   → katalog carousel produk
-/list      → button list (interactive, kaya WA)
-/html      → rich HTML custom card
-/ping      → cek bot hidup
-/grupinfo  → info grup (kirim di grup)
-/help      → daftar perintah lengkap
-```
+| Command | Fungsi |
+|---|---|
+| `/menu` | Menu utama rich + button |
+| `/promo` | Halaman promo (tabel harga + CTA) |
+| `/catalog` | Katalog carousel produk |
+| `/list` | Button list interactive kaya WA |
+| `/html` | Rich HTML custom card |
+| `/ping` | Cek bot hidup |
+| `/grupinfo` | Info grup (kirim di grup) |
+| `/announce <teks>` | Pengumuman grup rich |
+| `/help` | Daftar perintah lengkap |
 
-Di terminal juga ada REPL: ketik `status` untuk lihat koneksi, `exit` untuk keluar.
+Terminal REPL: `status` = cek koneksi · `exit` = keluar.
 
 ## 🛠️ Bikin Command Sendiri
 
@@ -107,22 +131,40 @@ if (text === "/halo") {
 }
 ```
 
-Format rich-nya **sama persis** dengan yang tampil di web Neo Chat — jadi apa yang kamu tulis di JSON, itu yang user lihat.
+Format rich-nya **sama persis** dengan yang tampil di web Neo Chat — tulis JSON, user lihat tampilan cantiknya. 🎨
 
 ## ❓ FAQ
 
-**Q: Bayar?**
-Gratis 100%. Bot-nya open source, web Neo Chat juga gratis dipake.
+<details>
+<summary><b>Bayar?</b></summary>
+<br>Gratis 100%. Bot-nya open source (MIT), web Neo Chat juga gratis dipake.
+</details>
 
-**Q: Botnya mati pas internet putus?**
-Auto-reconnect. begitu koneksi balik, bot langsung online lagi.
+<details>
+<summary><b>Bot mati pas internet putus?</b></summary>
+<br>Auto-reconnect — begitu koneksi balik, bot langsung online lagi.
+</details>
 
-**Q: Kode 8 digit kedaluwarsa?**
-Generate lagi dari Profile → Perangkat. Kode cuma berlaku 5 menit demi keamanan.
+<details>
+<summary><b>Kode 8 digit kedaluwarsa?</b></summary>
+<br>Generate lagi dari Profile → Perangkat. Kode cuma berlaku 5 menit demi keamanan.
+</details>
 
-**Q: Bisa 1 akun banyak bot?**
-Bisa! Tiap perangkat/bot dapet kode & sesi sendiri.
+<details>
+<summary><b>Bisa 1 akun banyak bot?</b></summary>
+<br>Bisa! Tiap perangkat/bot dapet kode & sesi sendiri.
+</details>
 
 ## 📄 Lisensi
 
-MIT — bebas dipake, modifikasi, dan distribute. Dibuat dengan ❤️ oleh **dika x dev**.
+Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for more information.
+
+---
+
+<div align="center">
+
+**Dibuat dengan ❤️ oleh [dika x dev](https://neochat.web.id)**
+
+⭐ Star repo ini kalau bermanfaat!
+
+</div>

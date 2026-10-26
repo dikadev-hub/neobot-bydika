@@ -133,7 +133,7 @@ function connect(token) {
 async function pair() {
   const res = await fetch(SERVER + "/api/pair/verify", {
     method: "POST",
-    headers: { "Content-Type": "application/json", "Origin": SERVER, "User-Agent": "NeoBot/1.0 (+https://github.com/dikaxdev/neobot-bydika)" },
+    headers: { "Content-Type": "application/json", "Origin": SERVER, "User-Agent": "NeoBot/1.0 (+https://github.com/dikadev-hub/neobot-bydika)" },
     body: JSON.stringify({ code: CODE, deviceName: "NeoBot Terminal", platform: "nodejs" })
   })
   const j = await res.json()
