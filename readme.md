@@ -15,6 +15,10 @@ Pairing kode 8 digit — semudah login WhatsApp Web. **100% gratis.**
 
 </div>
 
+<img src="assets/rich-showcase.jpg" alt="Preview 24 Rich Keys — NEOBOT-BYDIKA" width="100%">
+
+<p align="center"><i>👆 Semua komponen Rich Message yang bisa bot kamu kirim — 22 showcase asli dari renderer Neo Chat.</i></p>
+
 ---
 
 > **Neo Chat** adalah platform chat modern tanpa nomor HP — chat real-time, grup, komunitas, saluran, status 24 jam, dompo digital & **Rich Message engine** kaya Telegram. Daftar gratis di **[neochat.web.id](https://neochat.web.id)** 🚀
