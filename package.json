@@ -1,0 +1,12 @@
+{
+  "name": "neobot-bydika",
+  "version": "1.0.0",
+  "description": "NEOBOT-BYDIKA — Bot client resmi untuk Neo Chat. Rich message 24-key (button, tabel, spoiler, dokumen) di chat pribadi & grup. Pairing kode 8 digit.",
+  "main": "index.js",
+  "scripts": { "start": "node index.js" },
+  "keywords": ["neochat", "bot", "rich-message", "whatsapp-style", "bydika"],
+  "author": "dika x dev",
+  "license": "MIT",
+  "dependencies": { "socket.io-client": "^4.7.5" },
+  "engines": { "node": ">=16" }
+}
